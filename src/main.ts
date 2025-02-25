@@ -58,7 +58,8 @@ export async function run(): Promise<void> {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${token}`
-      }
+      },
+      body: JSON.stringify({"PullImage":true})
     })
 
     if(!recreateResponse.ok) {
