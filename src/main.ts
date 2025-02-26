@@ -69,6 +69,7 @@ export async function run(): Promise<void> {
       {
         method: 'POST',
         headers: {
+          'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`
         },
         body: JSON.stringify({ PullImage: true })
@@ -76,6 +77,8 @@ export async function run(): Promise<void> {
     )
 
     if (!recreateResponse.ok) {
+      core.info(recreateResponse.statusText)
+      core.info(await recreateResponse.text())
       throw new Error(
         `Failed to recreate container: ${recreateResponse.statusText}`
       )

@@ -34523,11 +34523,14 @@ async function run() {
         const recreateResponse = await fetch(`${portainerHost}/api/endpoints/3/docker/containers/${containerId}/recreate`, {
             method: 'POST',
             headers: {
+                'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`
             },
             body: JSON.stringify({ PullImage: true })
         });
         if (!recreateResponse.ok) {
+            coreExports.info(recreateResponse.statusText);
+            coreExports.info(await recreateResponse.text());
             throw new Error(`Failed to recreate container: ${recreateResponse.statusText}`);
         }
         coreExports.info(`Recreated container: ${containerName}`);
