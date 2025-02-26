@@ -34513,6 +34513,7 @@ async function run() {
             throw new Error(`Failed to get containers from Portainer: ${containersResponse.statusText}`);
         }
         const containersData = await containersResponse.json();
+        coreExports.info(containersData);
         const container = containersData.find((container) => container.Names.includes(`/${containerName}`));
         if (!container) {
             throw new Error(`Container not found: ${containerName}`);
