@@ -65,7 +65,7 @@ export async function run(): Promise<void> {
     core.info(`Container ID: ${containerId}`)
 
     const recreateResponse = await fetch(
-      `${portainerHost}/api/endpoints/3/docker/containers/${containerId}/recreate`,
+      `${portainerHost}/api/docker/3/containers/${containerId}/recreate`,
       {
         method: 'POST',
         headers: {

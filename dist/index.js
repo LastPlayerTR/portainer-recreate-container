@@ -34520,7 +34520,7 @@ async function run() {
         }
         const containerId = container.Id;
         coreExports.info(`Container ID: ${containerId}`);
-        const recreateResponse = await fetch(`${portainerHost}/api/endpoints/3/docker/containers/${containerId}/recreate`, {
+        const recreateResponse = await fetch(`${portainerHost}/api/docker/3/containers/${containerId}/recreate`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
