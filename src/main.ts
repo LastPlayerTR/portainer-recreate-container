@@ -53,6 +53,7 @@ export async function run(): Promise<void> {
       )
     }
     const containersData: any = await containersResponse.json()
+    core.info(containersData)
     const container = containersData.find((container: any) =>
       container.Names.includes(`/${containerName}`)
     )
